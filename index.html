@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday, NANAYYYY! 🎂</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="confetti-bg" id="confettiBg"></div>
+<canvas id="fwCanvas"></canvas>
+<canvas id="cfCanvas"></canvas>
+<div id="flash"></div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <span class="lb-close" id="lbClose">×</span>
+  <img id="lbImg" src="" alt="" />
+</div>
+
+<!-- ============================================================
+     COUNTDOWN SCREEN — satu-satunya yang tampil sebelum waktu
+     ============================================================ -->
+<div id="countdown-screen">
+  <div class="cd-pretitle">✨ sesuatu yang istimewa menantimu ✨</div>
+  <div class="cd-main-title">Hitung Mundur</div>
+  <div class="cd-sub">menuju hari yang paling spesial tahun ini 🎂</div>
+
+  <div class="cd-boxes">
+    <div class="cd-box cd-box-hari">
+      <span class="cd-num" id="cd-hari">00</span>
+      <span class="cd-lbl">Hari</span>
+    </div>
+    <div class="cd-box cd-box-jam">
+      <span class="cd-num" id="cd-jam">00</span>
+      <span class="cd-lbl">Jam</span>
+    </div>
+    <div class="cd-box cd-box-menit">
+      <span class="cd-num" id="cd-menit">00</span>
+      <span class="cd-lbl">Menit</span>
+    </div>
+    <div class="cd-box cd-box-detik" id="cdBoxDetik">
+      <span class="cd-num" id="cd-detik">00</span>
+      <span class="cd-lbl">Detik</span>
+    </div>
+  </div>
+
+  <div class="cd-hint">dibuat khusus untukmu 💖</div>
+</div>
+
+<!-- ============================================================
+     MAIN CONTENT — muncul setelah countdown selesai
+     ============================================================ -->
+<div id="main-content">
+
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-blob" style="width:500px;height:500px;background:var(--pink);top:-100px;left:-150px;"></div>
+    <div class="hero-blob" style="width:400px;height:400px;background:var(--yellow);bottom:-80px;right:-100px;animation-delay:2s;"></div>
+    <div class="hero-blob" style="width:340px;height:340px;background:var(--mint);top:30%;right:-80px;animation-delay:4s;"></div>
+    <div class="hero-blob" style="width:270px;height:270px;background:var(--sky);bottom:10%;left:-50px;animation-delay:1s;"></div>
+    <div class="hero-emojis"><span>🎉</span><span>🎈</span><span>🎂</span><span>🎀</span><span>✨</span></div>
+    <div class="hero-title t1">Happy Birthday</div>
+    <div class="hero-name">✦ NANAYYY ✦</div>
+    <div class="hero-title t2" style="margin-top:.5rem;">Yang Paling Cantik!</div>
+    <p style="margin-top:1.5rem;font-size:1.1rem;font-weight:700;color:#888;position:relative;z-index:2;max-width:420px;">
+     BTW Nungguin yaa wkwkwkwkwk 😂😂
+    </p>
+    <div class="scroll-hint">↓ scroll terus yaa ↓</div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <div class="max-w-5xl mx-auto">
+      <div class="reveal">
+        <span class="s-badge" style="background:#ffe0ef;color:var(--pink);">📸 Kenangan Kita</span>
+        <h2 class="s-title" style="color:var(--pink);">Jejak Kecil Dalam Frame</h2>
+        <p style="color:#bbb;font-weight:600;font-size:.9rem;">Setiap foto menyimpan cerita yang indah ✨</p>
+      </div>
+      <div class="gal-grid reveal">
+
+        <div class="photo-card" onclick="openLb(this)">
+          <img src="foto/foto1.jpg" alt="Foto 1" />
+          <div class="photo-ph"><span class="ic">🖼️</span><span>Foto 1</span><span style="font-size:.72rem;opacity:.6;">Ganti dengan foto kamu</span></div>
+          <div class="photo-cap">📍 12 Nov 2025</div>
+        </div>
+
+        <div class="photo-card" onclick="openLb(this)">
+          <img src="foto/foto2.jpg" alt="Foto 2" />
+          <div class="photo-ph"><span class="ic">🖼️</span><span>Foto 2</span><span style="font-size:.72rem;opacity:.6;">Ganti dengan foto kamu</span></div>
+          <div class="photo-cap">📍 24 Nov 2025</div>
+        </div>
+
+        <div class="photo-card" onclick="openLb(this)">
+          <img src="foto/foto3.png" alt="Foto 3" />
+          <div class="photo-ph"><span class="ic">🖼️</span><span>Foto 3</span><span style="font-size:.72rem;opacity:.6;">Ganti dengan foto kamu</span></div>
+          <div class="photo-cap">📍30 Jan 2026</div>
+        </div>
+
+        <div class="photo-card" onclick="openLb(this)">
+          <img src="foto/foto4.jpg" alt="Foto 4" />
+          <div class="photo-ph"><span class="ic">🖼️</span><span>Foto 4</span><span style="font-size:.72rem;opacity:.6;">Ganti dengan foto kamu</span></div>
+          <div class="photo-cap">📍 15 Mar 2026</div>
+        </div>
+
+        <div class="photo-card" onclick="openLb(this)">
+          <img src="foto/foto5.jpg" alt="Foto 5" />
+          <div class="photo-ph"><span class="ic">🖼️</span><span>Foto 5</span><span style="font-size:.72rem;opacity:.6;">Ganti dengan foto kamu</span></div>
+          <div class="photo-cap">📍 20 Maret 2026</div>
+        </div>
+
+        <div class="photo-card" onclick="openLb(this)">
+          <img src="foto/foto6.png" alt="Foto 6" />
+          <div class="photo-ph"><span class="ic">🖼️</span><span>Foto 6</span><span style="font-size:.72rem;opacity:.6;">Ganti dengan foto kamu</span></div>
+          <div class="photo-cap">📍Edit Bunga fresh kita</div>
+        </div>
+
+      </div>
+  </section>
+
+  <!-- LOVE LETTER -->
+  <section id="letter">
+    <div class="max-w-3xl mx-auto" style="text-align:center;">
+      <div class="reveal">
+        <span class="s-badge" style="background:#fff3c4;color:var(--orange);">💌 Dari Hatiku</span>
+        <h2 class="s-title" style="color:var(--orange);">Ucapan tipiz tipiz</h2>
+        <p style="color:#bbb;font-weight:600;font-size:.9rem;">💛💛💛💛💛💛💛💛</p>
+      </div>
+      <div class="letter-card reveal">
+        <span class="sticker" style="top:-1.2rem;right:1.5rem;">🎀</span>
+        <span class="sticker" style="bottom:1.5rem;right:-1rem;animation-delay:1s;">🌸</span>
+        <!-- <p>Untuk <strong style="color:var(--pink);">Nanayyyy</strong> tersayangku,</p><br> -->
+        <p>
+        Haiiii Nanayyyy sayangggg, Selamat ulang tahun yaa ❤️
+        </p><br>
+        <p>
+        Maaf ya tadi aku pura-pura lupa, padahal sebenernya aku udah nunggu
+        hari ini dari lama. Aku cuma pengen liat reaksi kamu aja…😝
+        </p><br>
+        <p>
+        Di hari spesial kamu ini, aku cuma mau bilang betapa bersyukurnya aku bisa kenal kamu.
+        Kamu adalah salah satu hal terbaik yang pernah ada di hidupku. Setiap momen sama kamu
+        selalu berasa hangat, menyenangkan, dan penuh warna. 🌈
+        </p><br>
+        <p>
+        Terima kasih sudah selalu ada, selalu bisa bikin aku senyum bahkan di
+        hari yang paling berat sekalipun. Kamu itu luar biasa, dan aku berharap kamu selalu tahu itu, no bohong bohonggg welll.
+        </p><br>
+        <p>
+        Semoga di umur kamu yang sekarang, semua impian kamu tercapai, kamu selalu sehat,
+        selalu bahagia, dan semoga aku masih bisa ada di samping kamu untuk waktu yang lama.
+        </p><br>
+        <p>
+        Sekali lagi, selamat ulang tahun ya babyyyy, i loveeee uuu so much ❤️💖❤️💖❤️💖❤️💖
+        </p>
+        <div class="letter-sig">— Babu Hamster KDM 😂, Farid 💖</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="big-heart">💖</span>
+    <div style="font-size:1.5rem;font-family:'Pacifico',cursive;margin-bottom:.5rem;">Happy Birthday!</div>
+    <p style="color:#ccc;font-size:.88rem;font-weight:600;">Made with love, just for you 🎉</p>
+  </footer>
+
+</div><!-- /#main-content -->
+
+<script src="script.js"></script>
+</body>
+</html>
